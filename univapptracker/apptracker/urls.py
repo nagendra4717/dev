@@ -37,5 +37,11 @@ urlpatterns = [
     name="application_delete",
     ),
 
+    path(
+    "application/<int:pk>/view/",
+    views.application_view,
+    name="application_view"
+),
+
 ]
 

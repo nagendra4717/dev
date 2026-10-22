@@ -160,5 +160,5 @@ MAILERS = {
 }
 
 LOGIN_URL = "/accounts/login/"
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "application_search"
 ACCOUNT_LOGOUT_REDIRECT_URL = "/accounts/login/"

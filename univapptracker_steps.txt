@@ -1,0 +1,22 @@
+1. install git on windows and configure it globally
+
+MILESTONE 1:
+
+1. create virtual env
+2. install python, django, config MYSQL  
+
+
+MILESTONE 2:
+3. Install django-allauth (with social media) 
+  on VE python -m pip install django-allauth
+python -m pip install "django-allauth[socialaccount]"
+
+4. Configure and migrate ajango-alauth
+5. Test the basic flows
+
+MILESTONE #3
+6. Use BOOTSTRAP
+
+
+ path('accounts/', include('django.contrib.auth.urls')),
+      

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -24,6 +25,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
 </head>
 <body>
+    <div class="container d-flex flex-column justify-content-center align-items-center text-center"
+         style="min-height: 100vh;">
 <h1>Welcome to College Application Tracker</h1>
 
 {% if user.is_authenticated %}
@@ -32,12 +35,12 @@
         {% csrf_token %}
        <a href="{% url 'application_create' %}" class="btn btn-primary me-2">New Application</a>
        <a href="{% url 'application_search' %}" class="btn btn-primary me-2">Search Application</a>
-       <a href="{% url 'application_list' %}" class="btn btn-primary me-2">My Applications</a>
+  
 
       <button type="submit" class="btn btn-outline-danger">Log out</button>
     </form>
 {% else %}
-    <p>Track your college applications in one place. </p>
+    <h4>Track your college applications in one place. </h4>
     <a href="{% url 'account_login' %}">Log in</a>
     |
     <a href="{% url 'account_signup' %}">Sign up</a>
@@ -51,5 +54,8 @@
 }
 </script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+
+ </div>
 </body>
+
 </html>

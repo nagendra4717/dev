@@ -18,11 +18,10 @@
     <!-- Bootstrap JavaScript from a CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 {% if user.is_authenticated %}
-    <h4 font="bold" color="blue">Signed In As {{ user.username }}!</h4>
+    <h4 font="bold" color="blue">Signed in as {{ user.username }}!</h4>
         <form method="post" action="{% url 'account_logout' %}">
         {% csrf_token %}
        <a href="{% url 'application_search' %}" class="btn btn-primary me-2">Search Application</a>
-       <a href="{% url 'application_list' %}" class="btn btn-primary me-2">My Applications</a>
       <button type="submit" class="btn btn-outline-danger">Log out</button>
     </form>
 {% else %}
@@ -34,6 +33,15 @@
 
     <div class="container mt-5">
         <h1 >Enter Details Of New College Application</h1>
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == "error" %}
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
 
 <form method="POST" action="{% url 'application_create' %}">
   {% csrf_token %}
@@ -141,7 +149,10 @@
 <label for="reco_letters_needed">Recommendation Letters Needed</label>
     <div class="sm:col-10">
 <select id="reco_letters_needed" name="reco_letters_needed">
-  <option value="0" >0</option>
+        <option value="" selected disabled>
+            Select a number
+        </option>
+  <option value="0">0</option>
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>

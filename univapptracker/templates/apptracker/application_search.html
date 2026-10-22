@@ -11,16 +11,16 @@
     >
 </head>
 <body>
-
+<h1>Welcome to College Application Tracker</h1>
 
     <!-- Bootstrap JavaScript from a CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+       <h4 font="bold" color="blue">Signed in as {{ user.username }}!</h4>
 {% if user.is_authenticated %}
-    <p> Signed In as {{ user.username }}!</p>
+    
         <form method="post" action="{% url 'account_logout' %}">
         {% csrf_token %}
         <a href="{% url 'application_create' %}" class="btn btn-primary me-2">New Application</a>
-       <a href="{% url 'application_list' %}" class="btn btn-primary me-2">My Applications</a>
       <button type="submit" class="btn btn-outline-danger">Log out</button>
     </form>
 {% else %}
@@ -32,6 +32,15 @@
 
     <div class="container mt-5">
         <h1 >Application Search</h1>
+        {% if messages %}
+    {% for message in messages %}
+        {% if message.tags == "error" %}
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
         <form method="GET" action="{% url 'application_search' %}" class="mb-4">
       
     <div class="input-group">
@@ -48,7 +57,7 @@
         </button>
 
         {% if query %}
-            <a href="{% url 'application_list' %}"
+            <a href="{% url 'application_search' %}"
                class="btn btn-outline-secondary">
                 Clear
             </a>
@@ -76,6 +85,8 @@
            <td>
                <a href="{% url 'application_update'  apptracker_tracker.pk  %}"
                    class="btn btn-sm btn-primary">Edit</a>
+                           <a href="{% url 'application_view'  apptracker_tracker.pk  %}"
+                   class="btn btn-sm btn-primary">View Details</a>
 
                    <form method="POST"
       action="{% url 'application_delete' apptracker_tracker.pk %}"
